@@ -3,7 +3,7 @@ var axios = require('axios')
 var toastr = require('./toastr')
 
 // Set up header
-axios.defaults.headers.common['token'] = '1d400680748d98846f175684bab65f2d'
+axios.defaults.headers.common['token'] = ['YOU_API_KEY_HERE']
 
 new Vue({
     el: '#app',
