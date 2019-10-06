@@ -1,0 +1,32 @@
+.cities-list {
+    background-color: #FFFFFF;
+    .list-header {
+        background-color: $mainColor;
+        color: $mainColorDark;
+        height: 70px;
+        display: flex;
+        align-items: center;
+    }
+    .header-title,
+    .list-title {
+        font-weight: bold;
+        text-transform: uppercase;
+        text-align: right;
+        @media screen and (max-width: $breakPointSm) {
+            text-align: left;
+        }
+    }
+    .list-title {
+        color: $successColor;
+    }
+    .form-group {
+        margin:  0;
+        width: 66%;
+    }
+    ul {
+        list-style-type: none;
+        li {
+            margin-bottom: 15px;
+        }
+    }
+}

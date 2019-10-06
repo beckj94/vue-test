@@ -1,0 +1,14 @@
+.btn {
+    text-transform: uppercase;
+    font-weight: bold;
+    border: none;
+    &.btn-success {
+        background-color: $successColor;
+    }
+    &.btn-danger {
+        background-color: $dangerColor;
+    }
+    &.btn-secondary {
+        background-color: $disabledColor;
+    }
+}

@@ -1,0 +1,102 @@
+<!doctype  html>
+<html lang="hu">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Zengo</title>
+    <link rel="stylesheet" href="dist/css/app.css"/>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <img src="dist/img/logo.png" alt="logó">
+        </div>
+    </div>
+    <div class="container main-wrapper">
+        <div id="app">
+            <div class="row">
+                <div class="p-0 col-sm-12 col-md-4">
+
+                    <!-- County selector -->
+                    <div class="pattern top"></div>
+                    <div class="form-group input-wrapper main-color county-selector">
+                        <label for="">Megye</label>
+                        <select name="selected_county" id="" class="form-control" @change="selectCounty">
+                            <option value="" selected disabled>Válassz megyét!</option>
+                            <option v-for="county in counties"
+                            :value="county.id">
+                                {{county.name}}
+                            </option>
+                        </select>
+                    </div>
+
+                    <!-- New city input -->
+                    <div v-cloak
+                    v-if="showCities == true"
+                    class="input-wrapper add-color new-city-input">
+                        <form @submit.prevent="addNewCity">
+                            <div class="form-group">
+                                <label for="">Új város</label>
+                                <input type="text"
+                                name="new_city_name"
+                                class="form-control"
+                                placeholder="Település neve"
+                                required>
+                            </div>
+                            <button class="btn btn-success btn-block">Felveszem</button>
+                        </form>
+                    </div>
+                    <div class="pattern bottom"></div>
+                </div>
+
+                <!-- Cities list -->
+                <div v-cloak v-if="showCities == true" class="cities-list col-sm-12 col-md-8">
+                    <div class="list-header row">
+                        <div class="header-title col-sm-12 col-md-3">Megye:</div>
+                        <div class="col-sm-12 col-md-9">{{selectedCountyName}}</div>
+                    </div>
+                    <div class="row pt-4 pr-5">
+                        <div class="list-title col-sm-12 col-md-3">Városok:</div>
+                        <ul class="cities-list col-sm-12 col-md-9">
+                            <li v-for="city in cities">
+                                <span v-if="selectedCityId != city.id"
+                                v-on:click="selectCity(city.id)"
+                                class="cursor-pointer">
+                                    {{city.name}}
+                                </span>
+                                <div class="d-flex justify-content-between">
+                                    <div class="form-group">
+                                        <input v-if="showCityOptions == true && selectedCityId == city.id"
+                                        class="form-control"
+                                        type="text"
+                                        :value="city.name"
+                                        name="edit_city_name"
+                                        required>
+                                    </div>
+                                    <button v-if="showCityOptions == true && selectedCityId == city.id"
+                                    class="btn btn-danger"
+                                    v-on:click="deleteCity(city.id)">
+                                        <span class="oi" data-glyph="trash"></span>
+                                    </button>
+                                    <button v-if="showCityOptions == true && selectedCityId == city.id"
+                                    class="btn btn-success"
+                                    v-on:click="modifyCity(city.id, city.name)">
+                                        <span class="oi" data-glyph="check"></span>
+                                    </button>
+                                    <button v-if="showCityOptions == true && selectedCityId == city.id"
+                                    class="btn btn-secondary"
+                                    v-on:click="closeCityOptions()">
+                                        <span class="oi" data-glyph="circle-x"></span>
+                                    </button>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="dist/js/app.js"></script>
+</body>
+</html>
