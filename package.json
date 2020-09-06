@@ -10,7 +10,7 @@
         "browserify-hmr": "^0.3.7",
         "concurrently": "^4.1.1",
         "jquery": "^3.5.0",
-        "node-sass": "^4.12.0",
+        "node-sass": "^4.13.1",
         "popper.js": "^1.15.0",
         "toastr": "^2.1.4",
         "vue": "^2.6.10",
